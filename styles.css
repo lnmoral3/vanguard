@@ -1,0 +1,501 @@
+/* CSS BY LEAH MORALES */
+
+/* IMPORTED FONTS*/
+/* IMPORT "INTER" FROM GOOGLE FONTS"*/
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Limelight&family=Playwrite+HU:wght@100..400&display=swap');
+
+/*CSS RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1.5;
+    font-family: var(--font);
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ROOT VARIABLES */
+:root {
+    --blue: #007BFF;
+    --red: #FF4500;
+    --white: #EAEAEA;
+    --black: #000000;
+    --charcoal: #333333;
+    --font: "Inter", sans-serif;
+}
+
+/* GLOBAL STYLES (MOBILE FIRST (SMALL) */
+/* MIN-WIDTH OF THE PAGE SHOULD NOT GO BELOW 400PX */
+
+main {
+    min-width: 400px;
+}
+
+h1 {
+    color: var(--blue);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h2, .results h3 {
+    font-size: 24pt;
+    font-weight: 600;
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+p {
+    font-size: 12pt;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+
+button {
+    background-color: var(--blue);
+    border: none;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 14pt;
+    border-radius: 10px;
+    padding: 1rem;
+    transition: transform .5s ease, background-color .5s ease;
+}
+button:hover {
+    background-color: var(--red);
+    transform: scale(1.1);
+}
+h2, h3, button {
+    animation: slideIn 1s ease-in;
+}
+@keyframes slideIn {
+    0% {
+        transform: translateY(-1rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/*TOP NAV SECTION*/
+
+header {
+    background-color: var(--black);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: 0 4px 15px 5px var(--blue);
+    position: relative;
+    z-index: 10;
+}
+header .container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* ADD FLOATING SVG LOGO BEFORE THE H1 */
+header img {
+    content: "";
+    left:-.5rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    background: url('images/vanguard-logo.svg') no-repeat center/contain;
+    flex-shrink: 0;
+    max-width: 100%;
+    animation: pulse 8s infinite ease-in-out;
+}
+header img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+/*HAMBURGER MENU*/
+nav {
+    width: 100%;
+    gap: 1rem;
+    flex-shrink: 1;
+}
+nav ul{
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 1rem;
+    list-style: none;
+    text-align: center;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+nav h2 {
+    visibility: hidden;
+    height: 1px;
+}
+nav li a {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--blue);
+    transition: background-color 0.3s ease-in;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+nav a:hover, nav input:hover {
+    background-color: var(--blue);
+    color: var(--black);
+}
+nav label {
+    position: absolute;
+    cursor: pointer;
+    padding: 1.5rem;
+    top: 2rem;
+    right: 1rem;
+    user-select: none;
+}
+/*HAMBURGER LINES*/
+label span {
+    background-color: var(--white);
+    display: block;
+    height: 0.25rem;
+    position: relative;
+    transition: background-color 0.3s ease-out;
+    width: 2rem;
+}
+label span:before, label span:after {
+    background: var(--white);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+label span:before {
+    top: 0.75rem;
+}
+label span:after {
+    top: -0.75rem;
+}
+nav input {
+    display: none;
+}
+/*HAMBURGER X*/
+nav input:checked ~ ul {
+    max-height: 500px;
+}
+nav input:checked ~ label span {
+    background: transparent;
+}
+nav input:checked ~ label span:before {
+    transform: rotate(-45deg);
+}
+nav input:checked ~ label span:after {
+    transform: rotate(45deg);
+}
+nav input:checked ~ label:not(.steps) span:before,
+nav input:checked ~ label:not(.steps) span:after {
+    top: 0;
+}
+
+/* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
+.innovation {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
+    height: 80vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1rem;
+    overflow: hidden;
+    color: var(--white);
+}
+.innovation > .container {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/*"WHAT WE OFFER" SECTION*/
+.offers .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+.offers h3 {
+    font-size: 16pt;
+    font-weight: 600;
+}
+.offers .items{
+    border-radius: 10px;
+    padding: 1.5rem 1rem 0 1rem;
+    transition: transform 1s ease;
+}
+.offers .items:hover {
+    transform: translateY(-10px);
+}
+.offers .items, .results {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+/*RESULTS SECTION*/
+.results {
+    padding-bottom: 2rem;
+}
+.results table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: var(--black);
+    text-align: center;
+    align-items: center;
+}
+.results table th {
+    font-weight: bold;
+}
+.results table th, .results table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1rem;
+    border: 1px solid var(--charcoal);
+}
+.results tr:nth-of-type(3) {
+    background-color: var(--charcoal);
+}
+.results tr:nth-of-type(5) {
+    background-color: var(--charcoal);
+}
+
+/* THIS ONE IS DONE FOR YOU */
+#bar-chart {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 1rem;
+    height: 300px;
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem;
+    position: relative;
+}
+
+/* ADD ON TRANSITION ON HEIGHT */
+.bar {
+    width: 50px;
+    background: var(--charcoal);
+    border-radius: 10px;
+    position: relative;
+    transition: height 1s ease-out 1s;
+    height: 0;
+}
+
+/* THIS ONE IS DONE FOR YOU */
+.bar::after {
+    content: attr(data-year);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+@keyframes stepUp {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: var(--height);
+    }
+}
+
+/* ADD ANIMATION ON stepUp for 1s ease-in-out forwards */
+.bar {
+    animation: stepUp 1s ease-in-out forwards;
+}
+
+/*FORM SECTION*/
+.contact form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+.contact form p {
+    padding: 0;
+}
+.contact form label {
+    display: block;
+}
+.contact form input[type=text], 
+.contact form input[type=email], 
+.contact form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    border: 3px solid var(--blue);
+    border-radius: 2px;
+}
+.contact form input[type=text], 
+.contact form input[type=email] {
+    height: 3rem; 
+}
+.contact form textarea {
+    height: 7rem;
+}
+.contact, footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1rem 0;
+}
+.contact button{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+/*FOOTER SECTION*/
+footer {
+    text-align: center;
+}
+footer a{
+    color: var(--blue);
+}
+
+/* MEDIA QUERIES (MEDIUM) */ 
+@media screen and (min-width: 800px) {
+    /*HAMBURGER MENU*/
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        max-height: none;
+    }
+    nav li{
+        margin: 0;
+    }
+    nav li a {
+        padding: 1rem;
+        white-space: nowrap;
+        margin: 0;
+    }
+    nav label span, input[type="checkbox"] {
+        display: none;
+    }
+
+    /*"WHAT WE OFFER" SECTION*/
+    .offers .container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .offers h2 {
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+    }
+
+    /*RESULTS SECTION*/
+    .results .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .results h2 {
+        grid-column: span 2;
+    }
+    .results p {
+        grid-column: span 2;
+    }
+    .results .grid {
+        display: grid;
+        box-sizing: border-box;
+    }    
+    .bar {
+        height: 80%;
+    }
+}
+
+/* MEDIA QUERIES (LARGE) */
+@media screen and (min-width: 1024px) {
+    /*"WHAT WE OFFER" SECTION*/
+    .offers .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /*FORM SECTION*/
+    .contact form {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin: 0;
+    }
+    .contact form button {
+        height: 3rem;
+        margin-top: 1.5rem;
+    }
+}
